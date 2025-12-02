@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="my"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 ချစ်သူ့မွေးနေ့ မင်္ဂလာပါ! 💝</title> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        body, h1, h2, h3, p, button, .gift-label {
+            font-family: 'Padauk', sans-serif !important;
+            line-height: 1.6; /* Tăng khoảng cách dòng để chữ Myanmar dễ đọc hơn */
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="heartsContainer"></div>
+    
+    <div class="container">
+        <h1>🎂 ချစ်သူ့မွေးနေ့ မင်္ဂလာပါ! 💝</h1>
+        
+        <div class="photo-frame">
+            <img src="./image/zar.png" alt="Zar's Photo" id="photoImg">
+            <div class="photo-overlay">
+                <div class="birthday-date">🎉 04/12/1998 🎉</div>
+            </div>
+        </div>
+        
+        <div class="message">
+            <p>💖 ဒီနေ့ဟာ တစ်နှစ်တာလုံးမှာ အထူးခြားဆုံးနေ့လေးပါ!</p>
+            
+            <p>🌸 ပျော်ရွှင်ခြင်း၊ ဝမ်းမြောက်ခြင်း၊ အောင်မြင်ခြင်းတွေနဲ့ ပြည့်စုံပါစေလို့ ဆုတောင်းပေးလိုက်ပါတယ်!</p>
+            
+            <p>✨ မင်းက ကိုယ့်ဘဝအတွက် ကံတရားကပေးတဲ့ အကောင်းဆုံးလက်ဆောင်မွန်ပါပဲ။</p>
+            
+            <p>💕 အရမ်းချစ်တယ်နော်!</p>
+        </div>
+
+        <div class="gifts-container">
+            <div class="gift-box" onclick="openGift(1)">
+                <div class="gift-icon">🎁</div>
+                <div class="gift-label">လက်ဆောင် ၁</div>
+            </div>
+            <div class="gift-box" onclick="openGift(2)">
+                <div class="gift-icon">🧸</div>
+                <div class="gift-label">လက်ဆောင် ၂</div>
+            </div>
+            <div class="gift-box" onclick="openGift(3)">
+                <div class="gift-icon">🌹</div>
+                <div class="gift-label">လက်ဆောင် ၃</div>
+            </div>
+            <div class="gift-box" onclick="openGift(4)">
+                <div class="gift-icon">💝</div>
+                <div class="gift-label">လက်ဆောင် ၄</div>
+            </div>
+        </div>
+
+        <button class="heart-button" onclick="showLove()">
+            💗 ဒီမှာ နှိပ်လိုက်နော်! 💗
+        </button>
+    </div>
+
+    <div class="modal" id="giftModal">
+        <div class="modal-content">
+            <h2 id="modalTitle"></h2>
+            <p id="modalMessage"></p>
+            <button class="close-btn" onclick="closeModal()">ပိတ်မည်</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <audio id="bgMusic" loop>
+        <source src="./audio/musics.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./main.js"></script>
+</body>
+</html>
+</body>
+</html>

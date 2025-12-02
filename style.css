@@ -1,0 +1,390 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Đã cập nhật font-family ở đây để sử dụng font Padauk (font đã được nhúng trong HTML) */
+    /* Nếu font Padauk không load được, nó sẽ dùng sans-serif (mặc định) */
+    font-family: 'Padauk', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #FFB6D9 0%, #FF85C0 50%, #FFA8D5 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    
+    /* Điều chỉnh nhỏ để tối ưu hiển thị chữ Myanmar */
+    line-height: 1.6; 
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #fff;
+    font-size: 2em;
+    margin: 30px 0 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: fadeInDown 1s ease;
+}
+
+.photo-frame {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 20px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: fadeInUp 1s ease 0.3s backwards;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(102, 126, 234, 0.9), transparent);
+    padding: 15px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.photo-frame:hover .photo-overlay {
+    transform: translateY(0);
+}
+
+.birthday-date {
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.message {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px 20px;
+    margin: 20px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: fadeInUp 1s ease 0.5s backwards;
+}
+
+.message p {
+    color: #333;
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin: 15px 0;
+}
+
+.gifts-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 30px 0;
+    animation: fadeInUp 1s ease 1s backwards;
+}
+
+.gift-box {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.gift-box:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.gift-icon {
+    font-size: 4em;
+    margin-bottom: 10px;
+    animation: bounce 2s infinite;
+}
+
+.gift-box:nth-child(1) .gift-icon { animation-delay: 0s; }
+.gift-box:nth-child(2) .gift-icon { animation-delay: 0.2s; }
+.gift-box:nth-child(3) .gift-icon { animation-delay: 0.4s; }
+.gift-box:nth-child(4) .gift-icon { animation-delay: 0.6s; }
+
+.gift-label {
+    color: #667eea;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.heart-button {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.heart-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(245, 87, 108, 0.6);
+}
+
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.heart {
+    position: absolute;
+    font-size: 2em;
+    animation: float 4s ease-in infinite;
+    opacity: 0;
+}
+
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: #f0f;
+    position: absolute;
+    animation: confetti-fall 3s linear infinite;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 400px;
+    text-align: center;
+    animation: fadeInUp 0.5s ease;
+}
+
+.modal-content h2 {
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    color: #333;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.close-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 25px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.close-btn:hover {
+    background: #764ba2;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes float {
+    0% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100vh) rotate(360deg);
+    }
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+/* ... code cũ ... */
+
+/* THÊM VÀO CUỐI FILE CSS */
+.music-control {
+    position: fixed;
+    bottom: 20px; /* Cách đáy 20px */
+    right: 20px;  /* Cách phải 20px */
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 3000; /* Nằm trên cùng */
+    font-size: 24px;
+    transition: transform 0.3s ease;
+    border: 2px solid #ff85c0;
+}
+
+.music-control:hover {
+    transform: scale(1.1) rotate(15deg);
+}
+
+/* --- CODE CŨ (Giữ nguyên) --- */
+.custom-love-popup {
+    border-radius: 25px !important;
+    border: 3px solid #fff !important;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.5) !important;
+    width: auto !important; /* Để tự động co giãn */
+    max-width: 600px !important; /* Không quá to trên máy tính */
+}
+
+.custom-love-btn {
+    border-radius: 50px !important;
+    padding: 10px 30px !important;
+    font-size: 1.1em !important;
+    font-weight: bold !important;
+    box-shadow: 0 5px 15px rgba(255, 77, 121, 0.4) !important;
+    background-color: #ff4d79 !important;
+}
+
+/* Style cho chữ bên trong (Mặc định PC) */
+.love-title {
+    color: #ff4d79;
+    font-size: 1.5em;
+}
+
+.love-content {
+    font-family: 'Padauk', sans-serif;
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #5c3a58;
+}
+
+.sub-text {
+    font-size: 0.8em;
+    color: #888;
+}
+
+.love-highlight {
+    color: #ff0055;
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+/* --- QUAN TRỌNG: CẤU HÌNH RIÊNG CHO ĐIỆN THOẠI (MOBILE) --- */
+@media screen and (max-width: 768px) {
+    /* 1. Popup chiếm 95% màn hình để không bị quá bé */
+    .custom-love-popup {
+        width: 95% !important; 
+        padding: 15px !important;
+    }
+
+    /* 2. Giảm kích thước chữ tiêu đề */
+    .love-title {
+        font-size: 1.2em; /* Nhỏ hơn một chút */
+    }
+
+    /* 3. Giảm kích thước chữ nội dung */
+    .love-content {
+        font-size: 1em; /* Chữ vừa đọc, không quá to */
+        line-height: 1.4;
+    }
+
+    /* 4. Điều chỉnh nút bấm nhỏ lại cho vừa ngón tay */
+    .custom-love-btn {
+        width: 100%; /* Nút dài ra full bề ngang cho dễ bấm */
+        padding: 12px !important;
+        font-size: 1em !important;
+    }
+
+    /* 5. Chỉnh ảnh gấu nhỏ lại nếu màn hình quá bé */
+    .swal2-image {
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+    }
+}
+/* Hiệu ứng xoay tròn khi nhạc đang phát */
+.music-playing {
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
